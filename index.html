@@ -3,68 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tracey Landrum - Graphic Designer & Web Developer</title>
+    <title>Tracey Landrum - Web Developer & Designer</title>
     <style>
         :root {
-            --primary-color: #3498db;
+            --primary-color: #2c3e50;
             --secondary-color: #e74c3c;
-            --accent-color: #f39c12;
-            --background-color: #ecf0f1;
-            --text-color: #2c3e50;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background-color: var(--bg-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         header {
             background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: linear-gradient(135deg, var(--background-color) 25%, transparent 25%) -50px 0,
-                        linear-gradient(225deg, var(--background-color) 25%, transparent 25%) -50px 0,
-                        linear-gradient(315deg, var(--background-color) 25%, transparent 25%),
-                        linear-gradient(45deg, var(--background-color) 25%, transparent 25%);
-            background-size: 100px 100px;
-            background-color: var(--primary-color);
-        }
-        
-        nav {
-            background-color: var(--secondary-color);
-            padding: 1rem 0;
-            text-align: center;
+            color: #fff;
+            padding: 20px 0;
         }
         
         nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
         }
         
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            margin-left: 20px;
         }
         
         nav ul li a {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
@@ -74,69 +59,69 @@
             color: var(--accent-color);
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 20px;
-        }
-        
-        .profile {
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://picsum.photos/1200/600');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
             display: flex;
             align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--secondary-color);
-            margin-right: 2rem;
-        }
-        
-        .profile-text h2 {
-            color: var(--primary-color);
-        }
-        
-        .skills {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        
-        .skill-item {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 10px;
+            justify-content: center;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            color: #fff;
         }
         
-        .skill-item:hover {
-            transform: translateY(-5px);
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent-color);
         }
         
         .portfolio {
+            padding: 50px 0;
+        }
+        
+        .portfolio h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
         
         .portfolio-item {
             position: relative;
             overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         
         .portfolio-item img {
             width: 100%;
-            height: 250px;
-            object-fit: cover;
+            height: auto;
             transition: transform 0.3s ease;
         }
         
@@ -144,13 +129,13 @@
             transform: scale(1.1);
         }
         
-        .portfolio-item .overlay {
+        .portfolio-item-overlay {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -158,104 +143,88 @@
             transition: opacity 0.3s ease;
         }
         
-        .portfolio-item:hover .overlay {
+        .portfolio-item:hover .portfolio-item-overlay {
             opacity: 1;
         }
         
-        .portfolio-item .overlay a {
-            color: white;
+        .portfolio-item-overlay a {
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             padding: 10px 20px;
             border-radius: 5px;
         }
         
         footer {
             background-color: var(--primary-color);
-            color: white;
+            color: #fff;
             text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-        
-        @media (max-width: 768px) {
-            .profile {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .profile-img {
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
+            padding: 20px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Tracey Landrum</h1>
-        <p>Graphic Designer & Web Developer</p>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <div class="container">
-        <section class="profile">
-            <img src="https://via.placeholder.com/200" alt="Tracey Landrum" class="profile-img">
-            <div class="profile-text">
-                <h2>Welcome to My Creative World</h2>
-                <p>Hello! I'm Tracey Landrum, a passionate graphic designer and web developer. I specialize in creating visually stunning and functional designs that bring ideas to life. With a keen eye for aesthetics and a love for clean code, I craft unique digital experiences that leave a lasting impression.</p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Tracey Landrum</h1>
+                <p>Web Developer & Designer crafting beautiful, functional websites</p>
+                <a href="#contact" class="cta-button">Get in Touch</a>
             </div>
         </section>
-        
-        <section class="skills">
-            <div class="skill-item">
-                <h3>Graphic Design</h3>
-                <p>Creating visually appealing designs</p>
-            </div>
-            <div class="skill-item">
-                <h3>Web Development</h3>
-                <p>Building responsive and interactive websites</p>
-            </div>
-            <div class="skill-item">
-                <h3>UI/UX Design</h3>
-                <p>Crafting intuitive user experiences</p>
-            </div>
-        </section>
-        
-        <h2>Featured Projects</h2>
-        <section class="portfolio">
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x250" alt="Project 1">
-                <div class="overlay">
-                    <a href="#">View Project</a>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x250" alt="Project 2">
-                <div class="overlay">
-                    <a href="#">View Project</a>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://via.placeholder.com/300x250" alt="Project 3">
-                <div class="overlay">
-                    <a href="#">View Project</a>
+
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <h2>My Portfolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://picsum.photos/300/200?random=1" alt="Project 1">
+                        <div class="portfolio-item-overlay">
+                            <a href="#">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://picsum.photos/300/200?random=2" alt="Project 2">
+                        <div class="portfolio-item-overlay">
+                            <a href="#">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://picsum.photos/300/200?random=3" alt="Project 3">
+                        <div class="portfolio-item-overlay">
+                            <a href="#">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://picsum.photos/300/200?random=4" alt="Project 4">
+                        <div class="portfolio-item-overlay">
+                            <a href="#">View Project</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2024 Tracey Landrum. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 Tracey Landrum. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
